@@ -1,0 +1,9 @@
+@import '../tasks/tasks.scss';
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    background: url('../img/dog.jpg');
+    background-size: cover;
+}
