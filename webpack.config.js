@@ -3,7 +3,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackConfig = require('html-webpack-plugin');
 
-module.exports = (env, argv) => ({
+module.exports = () => ({
     entry: ['./src/core/main.js', './src/core/main.scss'],
     output: {
         path: path.join(__dirname, 'dist'),
@@ -16,7 +16,7 @@ module.exports = (env, argv) => ({
                 test: /\.js$/,
                 exclude: /node_modules/,
                 use: {
-                    loader: "babel-loader",
+                    loader: 'babel-loader',
                     options: {
                         presets: ['@babel/preset-env'],
                         plugins: ['@babel/plugin-proposal-class-properties']
@@ -28,6 +28,7 @@ module.exports = (env, argv) => ({
                 use: [
                     'css-hot-loader',
                     MiniCssExtractPlugin.loader,
+
                     'css-loader',
                     'resolve-url-loader',
                     {
