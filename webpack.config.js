@@ -9,16 +9,20 @@ module.exports = () => ({
         path: path.join(__dirname, 'dist'),
         filename: 'bundle.js'
     },
-    devtool: 'souce-map',
+    resolve: {
+        extensions: ['*', '.js', '.jsx'],
+        modules: [path.join(__dirname, 'src'), 'node_modules']
+    },
+    devtool: 'source-map',
     module: {
         rules: [
             {
-                test: /\.js$/,
+                test: /\.jsx?$/,
                 exclude: /node_modules/,
                 use: {
                     loader: 'babel-loader',
                     options: {
-                        presets: ['@babel/preset-env'],
+                        presets: ['@babel/preset-env', '@babel/preset-react'],
                         plugins: ['@babel/plugin-proposal-class-properties']
                     }
                 }
