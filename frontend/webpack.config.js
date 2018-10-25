@@ -63,5 +63,9 @@ module.exports = () => ({
                 removeEmptyAttributes: true
             }
         })
-    ]
+    ],
+    devServer: {
+        historyApiFallback: true,
+        proxy: { '/api': 'http://localhost:3000/' }
+    }
 });

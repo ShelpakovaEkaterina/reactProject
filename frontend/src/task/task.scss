@@ -1,0 +1,12 @@
+.task {
+  &__completed {
+    text-decoration: line-through;
+  }
+
+  &__delete {
+    font-size: 12px;
+    cursor: pointer;
+    margin-left: 30px;
+    text-decoration: underline;
+  }
+}

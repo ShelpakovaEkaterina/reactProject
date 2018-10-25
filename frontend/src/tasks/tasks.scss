@@ -1,0 +1,10 @@
+@import "../task/task.scss";
+
+.tasks {
+  background: #ccc;
+  min-height: 300px;
+
+  &__loading {
+    background: red;
+  }
+}
