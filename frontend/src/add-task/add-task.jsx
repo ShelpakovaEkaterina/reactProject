@@ -4,17 +4,17 @@ import PropTypes from 'prop-types';
 class AddTask extends Component {
     textRef = createRef();
 
-    static propTypes = {
-        addTask: PropTypes.func.isRequired
-    };
+    // static propTypes = {
+    //     addTask: PropTypes.func.isRequired
+    // };
 
     onSubmit = (event) => {
         event.preventDefault();
 
-        const { addTask } = this.props;
+        // const { addTask } = this.props;
 
-        addTask(this.textRef.current.value);
-        this.textRef.current.value = '';
+        // addTask(this.textRef.current.value);
+        // this.textRef.current.value = '';
     };
 
     render() {

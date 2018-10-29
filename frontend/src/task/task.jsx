@@ -7,9 +7,9 @@ class Task extends Component {
             id: PropTypes.string.isRequired,
             text: PropTypes.string.isRequired,
             isCompleted: PropTypes.bool
-        }).isRequired,
-        updateTask: PropTypes.func,
-        deleteTask: PropTypes.func
+        }).isRequired
+        // updateTask: PropTypes.func,
+        // deleteTask: PropTypes.func
     };
 
     shouldComponentUpdate(nextProps) {
@@ -19,15 +19,13 @@ class Task extends Component {
     }
 
     deleteTask = () => {
-        const { deleteTask, task } = this.props;
-
-        deleteTask(task.id);
+        // const { deleteTask, task } = this.props;
+        // deleteTask(task.id);
     };
 
     updateTask = () => {
-        const { updateTask, task } = this.props;
-
-        updateTask(task.id);
+        // const { updateTask, task } = this.props;
+        // updateTask(task.id);
     };
 
     render() {
