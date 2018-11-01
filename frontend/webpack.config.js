@@ -4,7 +4,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackConfig = require('html-webpack-plugin');
 
 module.exports = () => ({
-    entry: ['./src/core/main.js', './src/core/main.scss'],
+    entry: ['@babel/polyfill', './src/core/main.js', './src/core/main.scss'],
     output: {
         path: path.join(__dirname, 'dist'),
         filename: 'bundle.js'
@@ -23,7 +23,10 @@ module.exports = () => ({
                     loader: 'babel-loader',
                     options: {
                         presets: ['@babel/preset-env', '@babel/preset-react'],
-                        plugins: ['@babel/plugin-proposal-class-properties']
+                        plugins: [
+                            '@babel/plugin-proposal-class-properties',
+                            '@babel/plugin-proposal-export-default-from'
+                        ]
                     }
                 }
             },

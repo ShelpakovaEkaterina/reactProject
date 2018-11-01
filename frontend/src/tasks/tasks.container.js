@@ -3,10 +3,11 @@ import {
     changeFilter,
     fetchTasksAction,
     fetchTasksSuccessAction,
-    fetchTasksErrorAction
+    fetchTasksErrorAction,
+    taskDeleteAction
 } from '../core/actions';
 import createRequest from '../core/create-request';
-import { fetchTasks } from '../core/api-config';
+import { fetchTasks, deleteTask } from '../core/api-config';
 import Tasks from './tasks';
 
 const filterTasksFunction = activeFilter => (task) => {
@@ -23,8 +24,7 @@ const filterTasksFunction = activeFilter => (task) => {
 };
 
 const mapStateToProps = (state) => {
-    const { activeFilter } = state.getIn(['tasks', 'activeFilter']);
-
+    const activeFilter = state.getIn(['tasks', 'activeFilter']);
     return {
         activeFilter,
         tasks: state.getIn(['tasks', 'data']).filter(filterTasksFunction(activeFilter)),
@@ -34,16 +34,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => ({
     changeFilter: newFilter => dispatch(changeFilter(newFilter)),
-    fetchTasks: () => {
-        dispatch(fetchTasksAction());
-        createRequest(fetchTasks).then((response) => {
-            if (response.status === 'OK') {
-                dispatch(fetchTasksSuccessAction(response.data));
-            } else {
-                dispatch(fetchTasksErrorAction(response.messages));
-            }
-        });
-    }
+    fetchTasks: () => dispatch(fetchTasksAction()),
+    deleteTask: id => dispatch(taskDeleteAction(id))
 });
 
 export default connect(

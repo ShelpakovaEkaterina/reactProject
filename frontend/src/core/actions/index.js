@@ -16,3 +16,13 @@ export const fetchTasksErrorAction = message => ({
     type: 'FETCH_TASKS_ERROR',
     message
 });
+
+export const taskDeleteAction = id => ({
+    type: 'DELETE_TASK',
+    id
+});
+
+export const taskDeleteSuccessAction = id => ({
+    type: 'DELETE_TASK_SUCCESS',
+    id
+});

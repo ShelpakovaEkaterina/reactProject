@@ -1,15 +1,14 @@
-import React, { Component, createRef } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import AddTaskForm from './add-task-form';
 
 class AddTask extends Component {
-    textRef = createRef();
-
     // static propTypes = {
     //     addTask: PropTypes.func.isRequired
     // };
 
-    onSubmit = (event) => {
-        event.preventDefault();
+    onSubmit = (values) => {
+        console.log(values.toJS());
 
         // const { addTask } = this.props;
 
@@ -18,12 +17,7 @@ class AddTask extends Component {
     };
 
     render() {
-        return (
-            <form className="add-task" onSubmit={this.onSubmit}>
-                <input className="add-task__field" type="text" name="text" ref={this.textRef} />
-                <input className="add-task__button" type="submit" value="Добавить" />
-          </form>
-        );
+        return <AddTaskForm onSubmit={this.onSubmit} />;
     }
 }
 

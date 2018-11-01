@@ -1,24 +1,29 @@
 import React from 'react';
 import { BrowserRouter, Route, Link } from 'react-router-dom';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
+import createSagaMiddleware from 'redux-saga';
 import { Provider } from 'react-redux';
 
+import sagas from './sagas';
 import Tasks from '../tasks/tasks.container';
 import About from '../about/about';
 import reducers from './reducers';
 
+const sagaMiddleware = createSagaMiddleware();
+
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(
     reducers,
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    composeEnhancers(applyMiddleware(sagaMiddleware))
 );
+
+sagaMiddleware.run(sagas);
 
 function Root() {
     return (
         <Provider store={store}>
         <BrowserRouter>
                 <div>
-                    <Link to="/">tasks</Link>
-                    <Link to="/about">about</Link>
                     <Route exact path="/" component={Tasks} />
                     <Route path="/about" component={About} />
           </div>

@@ -3,7 +3,7 @@ import { Map } from 'immutable';
 const defaultState = Map({
     activeFilter: 'all',
     data: [],
-    loading: false
+    isLoading: false
 });
 
 export default (state = defaultState, action) => {
@@ -19,6 +19,15 @@ export default (state = defaultState, action) => {
 
     case 'CHANGE_FILTER':
         return state.set('activeFilter', action.filter);
+
+    case 'DELETE_TASK':
+        return state;
+
+    case 'DELETE_TASK_SUCCESS':
+        return state.set(
+            'data',
+            state.get('data').filter(task => task.get('id') !== action.id)
+        );
 
     default:
         return state;

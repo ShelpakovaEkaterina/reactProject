@@ -12,7 +12,8 @@ class Tasks extends Component {
         activeFilter: PropTypes.oneOf(['all', 'active', 'completed']).isRequired,
         isLoading: PropTypes.bool.isRequired,
         changeFilter: PropTypes.func.isRequired,
-        fetchTasks: PropTypes.func.isRequired
+        fetchTasks: PropTypes.func.isRequired,
+        deleteTask: PropTypes.func.isRequired
     };
 
     componentDidMount() {
@@ -28,21 +29,11 @@ class Tasks extends Component {
         changeFilter(filter);
     }
 
-    // deleteTask = (id) => {
-    //     createRequest(deleteTask, { id }, null)
-    //         .then(({ status, data }) => {
-    //             if (status === 'OK') {
-    //                 this.setState(state => ({
-    //                     tasks: state.tasks.filter((task) => {
-    //                         if (task.id !== id) {
-    //                             return task;
-    //                         }
-    //                         return null;
-    //                     })
-    //                 }));
-    //             }
-    //         });
-    // }
+    deleteTask = (id) => {
+        const { deleteTask } = this.props;
+        
+        deleteTask(id);
+    }
 
     // updateTask = (id) => {
     //     const { tasks } = this.state;
@@ -98,7 +89,7 @@ class Tasks extends Component {
             }
             <div className="tasks__list">
                 {tasks.map(task => (
-                    <Task key={task.get('id')} task={task.toJS()}/>
+                    <Task key={task.get('id')} task={task.toJS()} deleteTask={this.deleteTask}/>
                 ))}
             </div>
                 { !isLoading && <AddTask/> }

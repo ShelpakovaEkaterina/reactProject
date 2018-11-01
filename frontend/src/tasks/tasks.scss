@@ -17,6 +17,7 @@
 .tasks-filter {
   display: inline;
   margin-right: 20px;
+  cursor: pointer;
 
   &__active {
     color: red;
