@@ -10,16 +10,15 @@ function TextInput({
                 {label}
           </label>
             <input className="text-input__input" {...input} id={input.name} type={type} />
-            {touched
-                && (error || warning) && (
+            {touched && (error || warning) && (
                 <div
-                  className={classNames('text-input__message', {
+                    className={classNames('text-input__message', {
                         error,
                         warning: !error && warning
                     })}
-                >
-                    {error || warning}
-                </div>
+            >
+              {error || warning}
+            </div>
             )}
       </div>
     );

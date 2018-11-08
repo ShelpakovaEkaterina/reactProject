@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`text-input 1`] = `
+<div
+  className="text-input text-input_input"
+>
+  <label
+    className="text-input__label"
+    htmlFor="test"
+  >
+    test
+  </label>
+  <input
+    className="text-input__input"
+    id="test"
+    name="test"
+    type="input"
+  />
+</div>
+`;

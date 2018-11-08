@@ -1,4 +1,4 @@
-const MOD_SEPARATOR = '__';
+const MOD_SEPARATOR = '_';
 
 const toKebabCase = string => String(string)
     .replace(/([A-Z])/g, '-$1')
